@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🏎 Formula One 🏎</title>
+    <style>
+      body {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-image: linear-gradient(#e10600, #ddbdd5);
+      }
+      body {
+        position: relative;
+        padding-top: 74px;
+        font-size: 14px;
+        font-family: "Cerebri Sans", Arial, Helvetica, sans-serif;
+        margin: 0;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+        display: block;
+      }
+      #header {
+        transition: all 150ms ease-in-out;
+      }
+      .fixed-top {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+      }
+      div {
+        display: block;
+      }
+      .headroom--unpinned header,
+      .headroom--not-top header {
+        box-shadow: rgb(37 39 89 / 8%) 0px 8px 8px 0;
+        background: rgba(255, 255, 255, 0.97);
+      }
+      .bg-white {
+        background-color: #fff !important;
+      }
+      .navbar {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+      }
+      #header .container-fluid {
+        max-width: 1300px;
+        margin-left: 87px;
+      }
+
+      .navbar-expand-lg > .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+      }
+      .navbar-expand-lg .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+      }
+      .navbar-collapse {
+        flex-grow: 1;
+        align-items: center;
+      }
+      .navbar-expand-lg .navbar-nav {
+        flex-direction: row;
+      }
+
+      .navbar-nav {
+        display: flex;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+      }
+      ul {
+        margin: 0px 0px 0px 0px;
+        margin-block-start: 0px;
+        margin-block-end: 0px;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+      }
+
+      li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+        font-size: 14px;
+        font-family: "cerebri sans", Arial, Helvetica, sans-serif;
+      }
+      .nav-link.schedule {
+        color: #e10600;
+        padding: 0px 12px 0px 12px;
+      }
+
+      .nav-link.schedule:hover {
+        background: #e10600;
+        color: #fff;
+        font-size: 12px;
+        font-weight: normal;
+      }
+      .nav-link.teams {
+        color: #e10600;
+        padding: 0px 12px 0px 12px;
+      }
+      .nav-link.teams:hover {
+        background: #e10600;
+        color: #fff;
+        font-size: 12px;
+        font-weight: normal;
+      }
+      .nav-link.drivers {
+        color: #e10600;
+        padding: 0px 12px 0px 12px;
+      }
+      .nav-link.drivers:hover {
+        background: #e10600;
+        color: #fff;
+        font-size: 12px;
+        font-weight: normal;
+      }
+
+      .nav-link {
+        font-size: 13px;
+        line-height: 34px;
+        font-weight: 900;
+        padding: 0 12px;
+        margin: 8px 0;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 100ms ease-in-out;
+        display: block;
+      }
+
+      .navbar-brand {
+        margin-right: 1rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+      }
+      li:hover {
+        cursor: pointer;
+      }
+
+      button {
+        display: block;
+        margin: 0px 0px 0px 0px;
+        border: 1px solid black;
+        background: #e10600;
+        color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-family: "cerebri sans", Arial, Helvetica, sans-serif;
+        line-height: 22px;
+        padding: 16px 24px;
+        border-radius: 30px;
+        transition: all 200ms ease;
+        box-shadow: rgba(37, 39, 89, 0.08) 0px 8px 8px 0;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #fff;
+        color: #e10600;
+        border: 1px solid black;
+      }
+      .mb-3 {
+        margin-bottom: 1 rem !important;
+      }
+      h1 {
+        font-weight: 900;
+        color: #fff;
+        margin: 0;
+      }
+
+      h1 {
+        margin-top: 150px;
+        display: block;
+        text-align: center;
+        color: #fff;
+        font-size: 30px;
+        position: relative;
+      }
+      .f1DriversPic {
+        border-radius: 20px;
+        position: relative;
+      }
+      h2 {
+        font-size: 20px;
+        font-family: "cerebri sans", Arial, Helvetica, sans-serif;
+        color: rgb(82, 58, 58);
+        display: block;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 0px;
+      }
+      .years {
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 18px;
+        font-family: "cerebri sans", Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="header" class="fixed-top">
+      <header class="navbar navbar-expand-lg bg-white">
+        <div class="container-fluid">
+          <a class="navbar-brand">
+            <img
+              alt="F1"
+              src="https://1000logos.net/wp-content/uploads/2020/02/F1-Logo-768x432.png"
+              width="100px"
+            />
+          </a>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a
+                  class="nav-link schedule"
+                  href="https://www.formula1.com/en/racing/2021.html"
+                  >Schedule</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link teams"
+                  href="https://www.formula1.com/en/teams.html"
+                  >Teams</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link drivers"
+                  href="https://www.formula1.com/en/drivers.html"
+                  >Drivers</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <p class="register"><button>Purchase Paddock Pass</button></p>
+        </div>
+      </header>
+    </div>
+    <br />
+
+    <div class="bod">
+      <h1>
+        History of Formula 1<br /><br />
+        <img
+          class="f1DriversPic"
+          src="https://www.f1-fansite.com/wp-content/uploads/2020/02/M227607-scaled-618x278.jpg"
+          width="500px"
+        />
+      </h1>
+      <hr />
+      <h2>
+        <strong>
+          The early years and the continuation of pre-WWII supercharged engines
+          (<em>1946–1950</em>)</strong
+        >
+      </h2>
+      <p class="years">
+        Formula One was first defined in 1946 by the Commission Sportive
+        Internationale (CSI) of the FIA, forerunner of FISA, as the premier
+        single-seater racing category in worldwide motorsport to become
+        effective in 1947. This new "International Formula" was initially known
+        variously as Formula A, Formula I, or Formula 1 with the corresponding
+        "Voiturette" formula being titled Formula B, Formula II, or Formula 2.
+        When the 500c formula was internationally recognised as Formula 3 in
+        1950 it was never titled as "Formula C" so the three International
+        Formulae were then "officially" titled Formula 1, Formula 2 and Formula
+        3.
+        <br />
+        <br />
+        In the beginning, the formula was largely based on pre-World War II
+        regulations defined by engine capacity. The regulation expected to bring
+        a new balance between supercharged and normally aspirated cars.
+        Non-supercharged 4.5-litre pre-war Grand Prix cars were allowed to race
+        against the pre-war 1.5-litre supercharged 'voiturettes', while pre-war
+        supercharged 3-litre Grand Prix cars were banned.
+        <br />
+        <br />
+        There is some debate as to what can be considered to be the first
+        Formula 1 race. The first race under the new regulations was the 1946
+        Turin Grand Prix held on 1 September, the race being won by Achille
+        Varzi in an Alfa Romeo 158 Alfetta - but this was before the Formula was
+        officially in place. The next contender is the 1947 Swedish Winter Grand
+        Prix which was won by Reg Parnell driving an ERA - but this race was run
+        on ice and some consider that it therefore was not a "proper" race
+        (there is also some doubt whether it was a Formula 1 race or a Formule
+        Libre race). The third claimant is the 1947 Pau Grand Prix which was won
+        by Nello Pagani driving a Maserati 4CL, which is irrefutable.
+        <br />
+        <br />
+        Championships for drivers or constructors were not introduced
+        immediately. In the early years there were around 20 races held from
+        late Spring to early Autumn (Fall) in Europe, although not all of these
+        were considered significant. Most competitive cars came from Italy,
+        particularly Alfa Romeo. Races saw pre-war heroes like Rudolf
+        Caracciola, Manfred Von Brauchitsch and Tazio Nuvolari end their
+        careers, while drivers like Alberto Ascari and Juan Manuel Fangio rose
+        to the front.
+      </p>
+      <hr />
+      <h2>
+        <strong>
+          The era of factory Italian and Mercedes front-engine cars
+          (<em>1950–1957</em>)
+        </strong>
+      </h2>
+      <p class="years">
+        Discounting the Indianapolis 500, the World Championship was entirely
+        based in Europe until 1953 when the season opened in Argentina. Since
+        then, there has always been at least one race outside Europe each year.
+        <br />
+        <br />
+        As planned, the World Championship races returned to Formula One
+        regulations for the 1954 season, now based on a new 2.5-litre
+        atmospheric engine regulation. This successfully brought more entrants
+        to the field. Lancia and Mercedes-Benz came to the formula, hiring the
+        best drivers of the era: Ascari for Lancia, Fangio for Mercedes.
+        Featuring desmodromic valves, fuel injection, magnesium and exotic
+        alloys parts, "streamlined" bodywork and other advanced features, the
+        brand new Mercedes began the 1954 season with Fangio taking pole
+        position at the "Grand Prix de l'ACF" at Reims-Gueux with the first lap
+        over 200 km/h (124 mph) in Formula One before winning the race after a
+        duel with other Mercedes driver Karl Kling, who finished second.
+        <br />
+        <br />
+        The Mercedes cars swept the next two seasons with Fangio and Moss
+        winning all but three of the races. However, at the end of the 1955
+        season Mercedes vanished as swiftly as they had come. They had proven
+        the superiority of their technology, but the crash of one of their
+        sports cars that year at Le Mans, killing 83 people, was also a
+        significant factor. The company would not return to Formula One for
+        forty years. After Le Mans, four of the year's remaining Grands Prix
+        were cancelled.
+        <br />
+        <br />
+        The Monaco Grand Prix saw a spectacular incident when Ascari and his
+        Lancia crashed into the harbour after missing a chicane. Ascari was
+        pulled out of the water alive and apparently well. However, there was
+        speculation over an undetected internal injury when four days later
+        Ascari was killed at Monza while testing a sportscar. After Ascari's
+        death, Lancia followed Mercedes out of the category, passing their
+        engines, cars, information and technology to Ferrari.
+        <br />
+        <br />
+        The 1956 season saw Fangio make good use of the Lancia-born Ferrari to
+        win his fourth championship. Driving for Maserati, he took his fifth
+        championship in the 1957 season, a record which would not be beaten for
+        46 years.
+        <br />
+        <br />
+        Ferrari developed a new engine for 1957, the V6 "Dino" engine, it was
+        competitive by 1958 and Mike Hawthorn became the first British F1 World
+        Champion, though his victory was short-lived: he died the following
+        winter.
+      </p>
+    </div>
+
+    <script>
+      function register() {
+        let name = prompt("Insert full name.");
+        let age = prompt("Insert age.");
+        let circuit = prompt("Which race would you like to attend?");
+
+        if (age < "18") {
+          alert(
+            "Sorry " +
+              name +
+              ", you may only enter the paddocks of the race at " +
+              circuit +
+              " with the accompaniment of an adult."
+          );
+        } else {
+          alert(
+            "Thank you for your response, " +
+              name +
+              ". You have successfully purchased the paddock pass for the race at " +
+              circuit +
+              "."
+          );
+        }
+      }
+
+      let registrationButton = document.querySelector("button");
+      registrationButton.addEventListener("click", register);
+    </script>
+  </body>
+</html>
